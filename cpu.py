@@ -163,10 +163,16 @@ class CPU:
             elif inst == CMP:
                 if self.reg[self.ram_read(self.pc + 1)] == self.reg[self.ram_read(self.pc + 2)]:
                     self.e = 1
+                    self.l = 0
+                    self.g = 0
                 elif self.reg[self.ram_read(self.pc + 1)] < self.reg[self.ram_read(self.pc + 2)]:
                     self.l = 1
+                    self.e = 0
+                    self.g = 0
                 elif self.reg[self.ram_read(self.pc + 1)] > self.reg[self.ram_read(self.pc + 2)]:
                     self.g = 1
+                    self.l = 0
+                    self.e = 0
 
                 self.pc += 3
 
